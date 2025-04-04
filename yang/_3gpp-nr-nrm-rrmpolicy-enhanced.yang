@@ -1,0 +1,51 @@
+module _3gpp-nr-nrm-rrmpolicy-enhanced {
+  yang-version 1.1;
+  namespace "urn:3gpp:sa5:_3gpp-nr-nrm-rrmpolicy-enhanced";
+  prefix "nrrrmpolicy3gpp-enhanced";
+
+  import _3gpp-nr-nrm-rrmpolicy { prefix nrrrmpolicy3gpp; }
+  import _3gpp-common-top { prefix top3gpp; }
+
+  organization "3GPP SA5";
+  contact "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464";
+  description "Enhanced version of the 3GPP NR NRM RRM Policy module with additional attributes.";
+  reference "3GPP TS 28.541 5G Network Resource Model (NRM)";
+
+  revision 2025-04-03 {
+    description "Added hostname and RRMPolicyRatio grouping inside a new object.";
+  }
+
+  container rrmpolicy-xnf {
+    description "Container holding RRMPolicyRatio list and hostname attribute.";
+    
+    leaf hostname {
+      description "Hostname of the network entity managing the RRM Policy.";
+      type string;
+    }
+    leaf version {
+      description "Version of the network entity managing the RRM Policy.";
+      type string;
+    }
+    leaf serialNumber {
+      description "Serial number of the network entity managing the RRM Policy.";
+      type string;
+    }
+    leaf macAddress {
+      description "MAC address of the network entity managing the RRM Policy.";
+      type string;
+    }
+    leaf platform {
+      description "Platform of the network entity managing the RRM Policy.";
+      type string;
+    }
+
+    list RRMPolicyRatio {
+      description "List of RRMPolicyRatio instances.";
+      key id;
+      uses top3gpp:Top_Grp;
+      container attributes {
+        uses nrrrmpolicy3gpp:RRMPolicyRatioGrp;
+      }
+    }
+  }
+}

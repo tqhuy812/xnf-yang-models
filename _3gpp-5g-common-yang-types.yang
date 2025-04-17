@@ -32,7 +32,8 @@ module _3gpp-5g-common-yang-types {
     }
     
     leaf sst {
-      type uint8;
+      //type uint8; //qtran
+      type string;
       description "Slice/Service Type.
          Values 0 to 127 belong to standardized SST range and are defined in 
          3GPP TS 23.501. Values 128 to 255 belong to operator-specific range.";
